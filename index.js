@@ -11,8 +11,8 @@ class App extends React.Component {
 
 class SearchForm extends React.Component {
 
-	constructor(props) {
-		super(props);
+	constructor() {
+		super();
 		this.state = {searchquery: '', results: []};
 	}
 
@@ -39,19 +39,20 @@ class SearchForm extends React.Component {
 	render() {
 		let listofresults = this.state.results.map(result => {
 			return (
-				<tr><td>{result.title}</td></tr>
+				<li>{result.title}</li>
 				);
 		});
 		return (
 			<div>
 				<div className="searchform">
+					<p>Enter your search term:</p>
 					<input type="text" className="textfield" value={this.state.searchquery} onChange={this.handleEntry.bind(this)} />
 					<button onClick={this.handleSearch.bind(this)}>Search</button>
 				</div>
 				<div className="listofresults">
-					<table>
+					<ul>
 						{this.state.results.length > 0 ? listofresults : null}
-					</table>
+					</ul>
 				</div>
 			</div>
 		);
